@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { projects, type Project } from "@/lib/projects";
 
@@ -43,8 +44,7 @@ function Case({ p, i, open, onToggle }: { p: Project; i: number; open: boolean; 
               </div>
               <div className="relative grid min-h-64 place-items-center overflow-hidden rounded-xl p-6" style={{ background: p.color }}>
                 {p.image ? (
-                  // eslint-disable-next-line @next/next/no-img-element -- static screenshots, fixed size
-                  <img src={p.image} alt={`Tela do ${p.name}`} loading="lazy" width={p.shape === "phone" ? 260 : 640} height={p.shape === "phone" ? 560 : 560}
+                  <Image src={p.image} alt={`Tela do ${p.name}`} sizes="(min-width: 1024px) 40vw, 90vw" width={p.shape === "phone" ? 260 : 640} height={p.shape === "phone" ? 560 : 560}
                     className={`rounded-lg shadow-2xl ${p.shape === "phone" ? "max-h-[28rem] w-auto" : "w-full"}`} />
                 ) : (
                   <p className="font-display text-[clamp(3rem,10vw,7rem)] font-extrabold leading-none tracking-tight" style={{ color: p.ink }}>{p.name}</p>

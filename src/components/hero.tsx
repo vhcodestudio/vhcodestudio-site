@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { projects } from "@/lib/projects";
 
@@ -50,8 +51,7 @@ export function Hero() {
             <motion.figure key={i} initial={{ opacity: 0, y: reduce ? 0 : 40 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1 + (i % frames.length) * 0.08, duration: 0.8, ease: EASE }}
               className={`relative shrink-0 overflow-hidden rounded-lg border border-seam bg-coal ${p.shape === "phone" ? "h-56 w-28 sm:h-72 sm:w-36" : "h-56 w-80 sm:h-72 sm:w-[26rem]"}`}>
-              {/* eslint-disable-next-line @next/next/no-img-element -- decorative strip, small static files */}
-              <img src={p.image} alt="" loading={i < 4 ? "eager" : "lazy"} width={p.shape === "phone" ? 144 : 416} height={288} className="h-full w-full object-cover object-top" />
+              <Image src={p.image!} alt="" aria-hidden="true" fill sizes={p.shape === "phone" ? "144px" : "416px"} priority={i < 3} className="object-cover object-top" />
               <figcaption className="absolute bottom-0 left-0 m-2 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider" style={{ background: p.color, color: p.ink }}>{p.name}</figcaption>
             </motion.figure>
           ))}
