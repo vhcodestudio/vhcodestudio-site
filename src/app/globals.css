@@ -22,5 +22,15 @@ body { background: var(--color-void); color: var(--color-bone); font-family: var
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+/* Easing borrowed from Open Props (--ease-out-5 / --ease-spring-3) */
+:root { --ease-out-5: cubic-bezier(0, 0, 0, 1); --ease-spring-3: linear(0, 0.009, 0.035 2.1%, 0.141, 0.281 6.7%, 0.723 12.9%, 0.938 16.7%, 1.017, 1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%, 1.129 32.8%, 1.051 39.6%, 1.017 43.1%, 0.991, 0.977 51%, 0.974 53.8%, 0.975 57.1%, 0.997 69.8%, 1.003 76.9%, 1); }
+
+@keyframes marquee { to { transform: translateX(-50%); } }
+.marquee { animation: marquee 38s linear infinite; }
+.marquee:hover { animation-play-state: paused; }
+
+.magnetic { transition: transform .5s var(--ease-spring-3); }
+.magnetic:hover { transform: translateY(-3px) scale(1.03); }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .marquee { animation: none; } .magnetic:hover { transform: none; } }
 @media print { .grain::after, nav { display: none; } body { background: #fff; color: #000; } }

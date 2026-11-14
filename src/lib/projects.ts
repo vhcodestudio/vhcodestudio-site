@@ -89,13 +89,6 @@ export const projects: Project[] = [
     detail: "Kanban, roadmap e issues compartilham o mesmo modelo de dados.", stack: ["React", "TypeScript"], repo: gh("Orbit"), shape: "wide",
   },
   {
-    slug: "kurio", name: "Kurio", year: 2026, kind: "Marketplace", color: "#f472b6", ink: "#2a0716",
-    line: "Marketplace de NFTs feito para o desafio de frontend da Jungle Gaming.",
-    problem: "O desafio pedia carteira, transações e atualizações em tempo real sem backend.",
-    built: "APIs, carteiras e transações simuladas com MSW e Socket.IO.",
-    detail: "React e TypeScript, com dados em tempo real simulados.", stack: ["React", "MSW", "Socket.IO"], repo: gh("kurio-nft-marketplace"), shape: "wide",
-  },
-  {
     slug: "vitrine", name: "Vitrine", year: 2026, kind: "App Android", color: "#facc15", ink: "#231c00",
     line: "Catálogo e pedidos para pequenos negócios, no celular.",
     problem: "Lojas pequenas vendem pelo WhatsApp e perdem pedidos no meio das mensagens.",

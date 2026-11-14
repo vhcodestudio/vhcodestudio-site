@@ -1,6 +1,7 @@
 import { Hero } from "@/components/hero";
 import { Work } from "@/components/work";
 import { Reveal } from "@/components/reveal";
+import { Marquee, Spotlight } from "@/components/ambient";
 import { projects } from "@/lib/projects";
 
 const SERVICES = [
@@ -34,7 +35,9 @@ export default function Home() {
       </nav>
 
       <main id="conteudo">
+        <Spotlight />
         <div id="topo"><Hero /></div>
+        <Marquee />
 
         <section id="trabalho" aria-labelledby="trabalho-h" className="scroll-mt-16 px-4 py-24 sm:px-8 sm:py-32">
           <Reveal className="mb-12 flex flex-wrap items-end justify-between gap-6">
@@ -82,7 +85,7 @@ export default function Home() {
             </h2>
             <p className="mt-8 max-w-xl text-lg text-bone/85">Conte o que você quer construir. Respondo com perguntas, uma ideia de prazo e o que eu faria primeiro.</p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <a href="mailto:vhcodestudio@gmail.com?subject=Projeto%20com%20a%20vhcodestudio" className="max-w-full break-all rounded-full bg-bone px-7 py-4 font-semibold text-void transition-opacity hover:opacity-85">vhcodestudio@gmail.com</a>
+              <a href="mailto:vhcodestudio@gmail.com?subject=Projeto%20com%20a%20vhcodestudio" className="magnetic max-w-full break-all rounded-full bg-bone px-7 py-4 font-semibold text-void transition-opacity hover:opacity-85">vhcodestudio@gmail.com</a>
               <a href="https://github.com/vhcodestudio" className="rounded-full border border-bone/40 px-7 py-4 hover:bg-bone hover:text-void">GitHub ↗</a>
               <a href="#trabalho" className="rounded-full border border-bone/40 px-7 py-4 hover:bg-bone hover:text-void">Ver trabalhos de novo</a>
             </div>
