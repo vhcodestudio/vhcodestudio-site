@@ -2,6 +2,8 @@ import { Hero } from "@/components/hero";
 import { Work } from "@/components/work";
 import { Reveal } from "@/components/reveal";
 import { Marquee, Spotlight } from "@/components/ambient";
+import { QuoteForm } from "@/components/quote-form";
+import { ContactCard } from "@/components/contact-card";
 import { projects } from "@/lib/projects";
 
 const SERVICES = [
@@ -78,18 +80,21 @@ export default function Home() {
         </section>
 
         <section id="contato" aria-labelledby="contato-h" className="scroll-mt-16 border-t border-seam px-4 py-24 sm:px-8 sm:py-36">
-          <Reveal>
-            <p className="text-xs uppercase tracking-[0.3em] text-ash">Contato</p>
-            <h2 id="contato-h" className="mt-4 max-w-5xl font-display font-extrabold leading-[0.9] tracking-[-0.04em]" style={{ fontSize: "clamp(2.8rem, 9vw, 8rem)" }}>
-              Tem um projeto parado na gaveta?
-            </h2>
-            <p className="mt-8 max-w-xl text-lg text-bone/85">Conte o que você quer construir. Respondo com perguntas, uma ideia de prazo e o que eu faria primeiro.</p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <a href="mailto:vhcodestudio@gmail.com?subject=Projeto%20com%20a%20vhcodestudio" className="magnetic max-w-full break-all rounded-full bg-bone px-7 py-4 font-semibold text-void transition-opacity hover:opacity-85">vhcodestudio@gmail.com</a>
-              <a href="https://github.com/vhcodestudio" className="rounded-full border border-bone/40 px-7 py-4 hover:bg-bone hover:text-void">GitHub ↗</a>
-              <a href="#trabalho" className="rounded-full border border-bone/40 px-7 py-4 hover:bg-bone hover:text-void">Ver trabalhos de novo</a>
+          <p className="text-xs uppercase tracking-[0.3em] text-ash">Orçamento · resposta por e-mail</p>
+          <h2 id="contato-h" className="mt-4 font-display font-extrabold leading-[0.86] tracking-[-0.045em]" style={{ fontSize: "clamp(3rem, min(12vw, 22vh), 11rem)" }}>
+            Vamos<br /><span className="text-transparent [-webkit-text-stroke:2px_var(--color-bone)]">conversar</span>
+          </h2>
+          <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
+            <div>
+              <p className="mb-8 max-w-xl text-lg text-bone/85">Escolha o tipo de projeto, conte a ideia e eu mando o orçamento no seu e-mail, com prazo e o que eu faria primeiro.</p>
+              <QuoteForm />
             </div>
-          </Reveal>
+            <aside aria-label="Outros contatos" className="space-y-3 lg:pt-16">
+              <ContactCard label="E-mail" value="vhcodestudio@gmail.com" href="mailto:vhcodestudio@gmail.com?subject=Projeto%20com%20a%20vhcodestudio" copy />
+              <ContactCard label="GitHub" value="github.com/vhcodestudio" href="https://github.com/vhcodestudio" />
+              <ContactCard label="Trabalhos" value="Ver os projetos de novo" href="#trabalho" />
+            </aside>
+          </div>
         </section>
       </main>
 
