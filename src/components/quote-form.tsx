@@ -107,7 +107,7 @@ export function QuoteForm() {
           <motion.path d="M15 27l7 7 15-16" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: reduce ? 1 : 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.5, delay: 0.5 }} />
         </svg>
         <h3 className="mt-6 font-display text-3xl font-bold">Pedido recebido, {f.name.trim().split(" ")[0]}.</h3>
-        <p className="mt-3 max-w-md text-bone/80">Vou ler com calma e mandar o orçamento para {f.email.trim()}. Se deixou o WhatsApp, posso chamar por lá também.</p>
+        <p className="mt-3 max-w-md text-bone/80">Vou ler com calma e mandar o orçamento para {f.email.trim()}.{f.phone.trim() ? " Se for mais rápido, chamo pelo WhatsApp." : ""}</p>
         <button type="button" onClick={() => { setStatus("idle"); setF({ service: "", budget: "", deadline: "", name: "", email: "", phone: "", message: "", consent: false, honey: "" }); }}
           className="magnetic mt-8 min-h-11 rounded-full border border-bone/40 px-6 py-3 hover:bg-bone hover:text-void">Enviar outro pedido</button>
       </motion.div>
