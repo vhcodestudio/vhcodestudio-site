@@ -4,11 +4,13 @@ import { useRef } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { projects } from "@/lib/projects";
+import { dicts, type Lang } from "@/lib/i18n";
 
 const WORD = "vhcodestudio";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-export function Hero() {
+export function Hero({ lang = "pt" }: { lang?: Lang }) {
+  const t = dicts[lang].hero;
   const reduce = useReducedMotion();
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
@@ -21,7 +23,7 @@ export function Hero() {
     <section ref={ref} className="relative flex min-h-[100svh] flex-col justify-between overflow-hidden pt-20 sm:pt-24" aria-labelledby="hero-h">
       <motion.div style={{ y: titleY, opacity: fade }} className="px-4 sm:px-8">
         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2, duration: 0.6 }}
-          className="text-xs uppercase tracking-[0.3em] text-ash">Estúdio independente · Brasil</motion.p>
+          className="text-xs uppercase tracking-[0.3em] text-ash">{t.eyebrow}</motion.p>
         {/* Sized by both width and height so the whole hero fits short, wide windows too. */}
         <h1 id="hero-h" className="mt-4 font-display font-extrabold leading-[0.85] tracking-[-0.045em]" style={{ fontSize: "clamp(3rem, min(11.6vw, 21vh), 15rem)" }}>
           <span className="sr-only">{WORD}</span>
@@ -42,10 +44,10 @@ export function Hero() {
         <motion.div initial={{ opacity: 0, y: reduce ? 0 : 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.8, ease: EASE }}
           className="mt-6 flex flex-wrap items-end justify-between gap-6">
           <p className="max-w-xl text-xl leading-snug text-bone/90 sm:text-2xl">
-            Eu desenho e programo produtos para a web. Sites que carregam rápido, apps que funcionam offline e ferramentas que alguém realmente usa.
+            {t.lead}
           </p>
           <a href="#trabalho" className="group flex items-center gap-3 text-sm uppercase tracking-[0.2em]">
-            Ver trabalhos
+            {t.cta}
             <span className="grid size-11 place-items-center rounded-full border border-bone/40 transition-colors group-hover:bg-bone group-hover:text-void" aria-hidden="true">↓</span>
           </a>
         </motion.div>

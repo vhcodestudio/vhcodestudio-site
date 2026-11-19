@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { dicts, type Lang } from "@/lib/i18n";
 
 /** Soft light that trails the pointer. Skipped on touch screens and for reduced motion. */
 export function Spotlight() {
@@ -26,13 +27,13 @@ export function Spotlight() {
   );
 }
 
-const WORDS = ["Sites", "Apps PWA", "Lojas", "Dashboards", "Ferramentas de IA", "Auditorias", "3D na web", "Design systems"];
 
 /** Infinite marquee of services; pure CSS so it costs nothing on the main thread. */
-export function Marquee() {
-  const row = [...WORDS, ...WORDS];
+export function Marquee({ lang = "pt" }: { lang?: Lang }) {
+  const { label, words } = dicts[lang].marquee;
+  const row = [...words, ...words];
   return (
-    <div className="relative overflow-hidden border-y border-seam py-6" aria-label="Serviços: sites, apps PWA, lojas, dashboards, ferramentas de IA, auditorias, 3D na web e design systems">
+    <div className="relative overflow-hidden border-y border-seam py-6" aria-label={`${label}: ${words.join(", ")}`}>
       <div className="marquee flex w-max gap-10 whitespace-nowrap font-display text-4xl font-bold tracking-tight sm:text-6xl" aria-hidden="true">
         {row.map((w, i) => (
           <span key={i} className="flex items-center gap-10">
