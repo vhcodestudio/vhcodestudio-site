@@ -25,16 +25,19 @@ export function Hero({ lang = "pt" }: { lang?: Lang }) {
         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2, duration: 0.6 }}
           className="text-xs uppercase tracking-[0.3em] text-ash">{t.eyebrow}</motion.p>
         {/* Sized by both width and height so the whole hero fits short, wide windows too. */}
-        <h1 id="hero-h" className="mt-4 font-display font-extrabold leading-[0.85] tracking-[-0.045em]" style={{ fontSize: "clamp(3rem, min(11.6vw, 21vh), 15rem)" }}>
+        <h1 id="hero-h" className="mt-4 font-display font-extrabold leading-[0.85] tracking-[-0.045em]" style={{ fontSize: "clamp(3rem, min(16.5vw, 15vh), 13rem)" }}>
           <span className="sr-only">{WORD}</span>
-          <span aria-hidden="true" className="flex flex-wrap sm:flex-nowrap">
-            {[...WORD].map((ch, i) => (
-              <span key={i} className="inline-block overflow-hidden pb-[0.06em]">
-                <motion.span className="inline-block" initial={{ y: reduce ? 0 : "105%" }} animate={{ y: 0 }}
-                  transition={{ duration: 0.9, ease: EASE, delay: 0.15 + i * 0.045 }}>{ch}</motion.span>
-              </span>
-            ))}
-          </span>
+          {/* "vhcode" on the first line, "studio" on the second. */}
+          {["vhcode", "studio"].map((line, li) => (
+            <span key={line} aria-hidden="true" className="flex">
+              {[...line].map((ch, i) => (
+                <span key={i} className="inline-block overflow-hidden pb-[0.06em]">
+                  <motion.span className="inline-block" initial={{ y: reduce ? 0 : "105%" }} animate={{ y: 0 }}
+                    transition={{ duration: 0.9, ease: EASE, delay: 0.15 + (li * 6 + i) * 0.045 }}>{ch}</motion.span>
+                </span>
+              ))}
+            </span>
+          ))}
         </h1>
         {/* Hand-drawn underline: a single SVG path traced on load (reanimate-style path drawing). */}
         <svg viewBox="0 0 1000 40" className="mt-2 h-6 w-[min(100%,58rem)] text-bone/70" aria-hidden="true" preserveAspectRatio="none">
